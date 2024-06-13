@@ -1,0 +1,25 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %}</title> {% comment %} vacios para ser heredados {% endcomment %}
+    <link rel="stylesheet" href="{% static 'lib/pico-main/css/pico.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+
+  <body>
+    <main class='contentedor-main'>
+      {% if request.user.is_authenticated %}
+        <div class="derecha">
+          <a href="{% url 'logout' %}"><button>Cerrar Sesión</button></a>
+        </div>        
+      {%  endif %}
+
+      {% block content %}
+        {% comment %} vacios para ser heredados {% endcomment %}
+      {% endblock content %}
+    </main>
+  </body>
+</html>

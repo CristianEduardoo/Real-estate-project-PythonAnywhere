@@ -1,0 +1,49 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+{% include "includes/head.html" %}
+
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+    <main class="contacto-img">
+        <div class="contenedor contenido-contacto">
+            {% if success %}
+                <p>¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.</p>
+            {% else %}
+                <h1>Rellene el formulario de contacto</h1>
+                <form class="formulario" method="post">
+                    {% csrf_token %}
+                    {% for fieldset_name, fieldset in form.fieldsets %}
+                        <fieldset>
+                            <legend>{{ fieldset_name }}</legend>
+                            {% for field in fieldset %}
+                                <div class="field-wrapper">
+                                    {{ field.as_p }}{% comment %} aquie esta el problema  {% endcomment %}
+                                    {% if field.errors %}
+                                    <div class="error-message">
+                                        {% for error in field.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+                    {% endfor %}
+                    <div class="enviar-formulario">
+                        <input type="submit" value="Enviar" class="btn-verde">
+                    </div>
+                </form>
+
+            {% endif %}
+        </div>
+    </main>
+    
+    {% include "includes/footer.html" %}    
+</body>
+</html>

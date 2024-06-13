@@ -1,0 +1,94 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+    width: 100%; /* Asegura que el ancho sea 100% del viewport */
+    max-width: 100%; /* Asegura que el ancho máximo sea 100% del viewport */
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: $fuente_principal;
+    font-size: 1.6rem;
+    line-height: 1.5; // Para que sea mas afradable al leer
+    overflow-x: hidden; /* Esto puede ayudar a ocultar el contenido que se sale del contenedor */
+    width: 100%; /* Asegura que el ancho sea 100% del viewport */
+    max-width: 100%; /* Asegura que el ancho máximo sea 100% del viewport */
+}
+
+p {
+    color: $negro;
+    font-size: 2rem;
+    font-weight: $delgada;
+}
+
+.contenedor {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+img,
+picture {
+    max-width: 100%;
+    width: 100%; // Para acomodar el width="200" height="300" en el HTML predeterminado
+    height: auto; // mismo
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    font-family: $fuente_principal;
+    margin: calc($separacion / 2) 0; // 0: Indica que el margen inferior será de 0. iz y der no se han establecido, van por default
+    font-weight: 300;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+.success-message {
+    color: $blanco;
+    background-color: $verde;
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 0px; 
+}
+
+/*=============== Errores ===============*/
+
+.error-message {
+    color: red;
+    margin-top: -1rem;
+    margin-bottom: -0.8rem;
+    font-size: 12px;
+}
+
+.errorlist{
+    color: $rojo;
+}

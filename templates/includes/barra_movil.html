@@ -1,0 +1,65 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+<!-- Logo -->
+<a href="{% url 'namespaceraices:main' %}"><!-- Otra opción es: "/" -->
+    <img class="logo-header" src="{% static 'img/logo.svg' %}" alt="logo_bienesRaices" />
+</a>
+
+<!--------- Div extra --------->
+<div class="extra-mobil">
+    <!-- btn dark -->
+    <div class="derecha-btndark">
+        <div class="separa-logo">
+            <div class ="position-user">
+                {% if request.user.is_authenticated %}
+                <div class="sidebar-desplegable">
+                    <p class="user-logged">{{ request.user.username }}</p>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <div class="dropdown-user">
+                    <div id="mySibar" class="siderbar-user">
+                        <nav class="navegacion-sidebar">
+                            {% if request.user.is_superuser %}
+                            <a href="{% url 'admin:index' %}">Portal Admin</a>
+                            {% endif %}
+                            <a href="{% url 'namespaceblog:blog-register' %}">Publicar un post</a>
+                            <a href="{% url 'namespacechat:home' %}">Sala de chat</a> {% comment %} Solo en local {% endcomment %}
+                            <a href="{% url 'namespaceraices:testimonials' %}">Escribir una reseña</a>
+                            <a href="{% url 'logout' %}">Cerrar sesión</a>
+                        </nav>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <i class="fa-solid fa-moon dark-mode-btn" id="icon-moon"></i>
+        </div>
+    </div>
+    <!-- burger btn -->
+    <div class="final-btn">
+        <div class="mobile-menu"> 
+            <img src="{% static 'img/barras.svg' %}" />
+        </div>
+        <div class="dropdown">
+            <div id="myDropdown" class="dropdown-content">
+                <nav class="navegacion-header">
+                    <a href="{% url 'namespaceraices:nosotros' %}">Acerca de nosotros</a>
+                    <a href="{% url 'namespaceraices:anuncios' %}">Anuncios</a>
+                    <a href="{% url 'namespaceblog:blog_list' %}">Blog</a>
+                    <a href="{% url 'namespaceraices:contacto' %}">Contacto</a>
+                    {% if request.user.is_authenticated %}
+                        <div class="icon-wrapper">
+                            <a href="{% url 'logout' %}" class="icon-default">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                            <a href="{% url 'logout' %}" class="icon-hover">
+                                <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+                            </a>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'login' %}">Inicia sesión</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>                

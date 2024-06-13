@@ -1,0 +1,46 @@
+.webp .inicio { // agregamos una clase extra para detectar el soporte de img del navegador
+    background-image: url('../img/header.webp');
+}
+
+.no-webp .inicio {
+    background-image: url('../img/header.jpg');
+}
+
+.header {
+    background-color: $grisOscuro; // color de fondo común para todas las paginas
+    padding: 0rem;
+}
+
+.inicio { // Clase extra para la imagen de la pagina de inicio
+    background-position: center center;
+    background-size: cover;
+
+    @include tablet {
+        min-height: 65rem;
+    }
+
+    .contenido-header {
+        @include tablet { // Para que conicida con el min-height de .inicio, asi las tienen ambas
+            min-height: 60rem;
+        }
+    }
+}
+
+.contenido-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 175rem;
+    padding: 1rem 1rem 1rem 1rem;
+
+    h1 {
+        text-align: center;
+        color: $blanco;
+        font-weight: $regular;
+        max-width: 60rem;
+
+        @include tablet {
+            text-align: left;
+        }
+    }
+}

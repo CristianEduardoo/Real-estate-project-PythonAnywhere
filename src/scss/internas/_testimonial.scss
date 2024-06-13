@@ -1,0 +1,90 @@
+/* ============= index ============= */
+.testimoniales{
+    overflow-x: hidden;
+}
+
+.testimonial{
+    background-color: $verde;
+    font-size: 1.5rem;
+    padding: 0rem 1rem;
+    margin: 1rem;
+    color: $blanco;
+    border-radius: 2rem;
+    height: 30rem;
+
+    @include tablet {
+        height: 20rem;
+    }
+    
+    @include desktop {
+        height: 40rem;
+    }
+}
+
+/* Slides */
+.mySlides {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: inherit;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 2s ease-in-out, height 2s ease-in-out;
+}
+
+.mySlides.fade-in {
+    opacity: 1;
+}
+
+/* Add an italic font style to all quotes */
+q {
+    font-style: italic;
+}
+
+/* Add a blue color to the author */
+.author {
+    color: $blanco;
+}
+
+/* ============= testimoniales.html ============= */
+
+.group-testimonials{
+    margin-bottom: 1rem
+}
+
+/* Textarea */
+.formTestimonials{
+    h1, h3, p {
+        margin: 0;
+    }
+
+    p{
+        text-align: left;
+        font-size: 1.5rem;
+        color: #8d8d8d;
+    }
+
+    textarea {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        height: 25rem;
+        margin-top: 0rem;
+
+        @include tablet {
+            width: 60rem;
+        }
+    }
+}
+
+.btn-negro input{
+    border-radius: 1rem;
+    border: 0.1rem solid #1c1c1c;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0rem;
+    width: 100%;
+    text-decoration: none;
+}

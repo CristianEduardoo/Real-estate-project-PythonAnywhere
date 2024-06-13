@@ -1,0 +1,20 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Cristian Eduardo Castro Vargas">
+    <meta name="description" content="Real-Estate-Project">
+    <meta charset="UTF-8">
+    <title>Bienes Raíces</title>
+    <link rel="icon" href="{% static 'img/logo.ico' %}" type="image/x-icon">
+    <!--=============== Bibliotecas y frameworks ===============-->
+    <script src="https://kit.fontawesome.com/46cf9b25f7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--=============== CSS - Global ===============-->
+    <link rel="preload" href="{% static 'css/app.css' %}" as="style"><!-- Para que el sitio web sea mas rapido rel=preload-->
+    <link rel="stylesheet" href="{% static 'css/app.css' %}?v=7" />
+    {% block head %}{% endblock head %}
+</head>
+{% block body %}{% endblock body %}

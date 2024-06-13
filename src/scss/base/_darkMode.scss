@@ -1,0 +1,113 @@
+.dark-mode{
+    // background-color: lighten($grisOscuro, $amount: 10);
+    background-color: darken($grisOscuro, $amount: 7);
+
+    p{
+        color: $blanco;
+    }
+
+    a, h1, h2, h3, h4{
+        color: $gris;
+    }
+
+    .anuncio{
+
+        h3, p{
+            color: $negro;
+        }
+
+        a{
+            background-color: darken($amarillo, $amount: 5);
+
+            &:hover{
+                background-color: darken($amarillo, $amount: 2);
+            }
+        }
+
+        .precio{
+            color: $verde
+        }
+    }
+
+    .info{
+        a{
+            background-color: darken($amarillo, $amount: 5);
+
+            &:hover{
+                background-color: darken($amarillo, $amount: 2);
+            }
+        }
+    }
+
+    .texto-nosotros blockquote {
+        color: darken($amarillo, $amount: 10);
+    }
+
+
+    .iconos-caracteristicas{
+        .icono{
+            filter: invert(60%);
+        }
+    }
+
+    /*=============== Contacto ===============*/
+    .form-map{
+        h4, p{
+            color: $negro;
+        }
+    }
+
+    /*=============== Login/Register ===============*/
+
+    .div-enviar input {
+        border: 0.1rem solid $amarillo;
+        background: #1c1c1c;
+    }
+
+    .terminos{
+        color: $blanco;
+    }
+
+    /*=============== Login con otros ===============*/
+    .con-otros a {
+        border: 0.1rem solid $blanco;
+    }
+
+    /*=============== Testimoniales ===============*/
+    .formTestimonials p{
+        color: $amarillo;
+    }
+    .formTestimonials textarea {
+        border: 1px solid $amarillo;
+    }
+
+    /*=============== Form Created Blog ===============*/
+    .group-createBlog{
+        label{
+            color: $blanco;;
+        }
+
+        input {
+            border: 0.1rem solid $amarillo;
+        }
+
+        textarea{
+            border: 0.1rem solid $amarillo;
+        }
+    }
+
+    /*=============== Logged - Out ===============*/
+    .LoggedOut_btn{
+        a {
+            border: 0.1rem solid $amarillo;
+        }
+    }
+
+    /*=============== Blog -list ===============*/
+    .entrada-nosesion{
+        a{
+            color: $amarillo;
+        }
+    }
+
+}

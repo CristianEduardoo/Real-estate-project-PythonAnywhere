@@ -1,0 +1,111 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+{% include "includes/head.html" %}
+
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+    <main class="form-img">
+        <div class="contenedor contenido-contacto">
+            <div class="contacto-formulario">
+                {% if success %}
+                    <div>
+                        <p class="success-message">¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.</p>
+                    </div>
+                {% else %}
+                    <form class="form-contact formulario" action="{% url 'namespaceraices:contacto' %}" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend>Informacion personal</legend>
+                            <div class="group">
+                                <div>
+                                    <label for="nombre">Nombre completo <span>*</span></label>
+                                    {% if request.user.is_authenticated %}
+                                        <input id="nombre" type="text" name="nombre" value="{{ request.user.username }}" placeholder="Tu nombre" disabled>
+                                        <input id="nombre" type="hidden" name="nombre" value="{{ request.user.username }}">
+                                    {% else %}
+                                        <input id="nombre" type="text" name="nombre" placeholder="Tu nombre" required>
+                                    {% endif %}
+                                </div>
+                                <!-- aqui el bloque de error de nombre -->
+                            </div>
+
+                            <div class="email-phone">
+                                <div class="group">
+                                    <div>
+                                        <label for="email">Email <span>*</span></label>
+                                        <input id="email" type="email" name="email" placeholder="Tu email" required>
+                                    </div>
+                                    <!-- aqui el bloque de error de email -->
+                                </div>
+                                <div class="group">
+                                    <div>
+                                        <label for="telefono">Teléfono <span>*</span></label>
+                                        <input id="telefono" type="tel" name="telefono" placeholder="Tu teléfono" required>
+                                    </div>
+                                    <!-- aqui el bloque de error de teléfono -->
+                                </div>
+                            </div>
+                            <div class="group">
+                                <div>
+                                    <label for="mensaje">Mensaje <span>*</span></label>
+                                    <textarea id="mensaje" name="mensaje" placeholder="Escribe un breve mensaje" required></textarea>
+                                </div>
+                                <!-- aqui el bloque de error de mensaje -->
+                            </div>
+                        </fieldset>
+
+                        <div class="enviar-formulario">
+                            <input type="submit" value="Enviar" class="enviar btn-verde">
+                        </div>
+                        {% if formContacto.errors %}
+                            {{formContacto.errors}}
+                        {% endif %} 
+                    </form>                                             
+                {% endif %}
+                    <div class="form-map">
+                        <div class="icon-flex">
+                            <div>
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4>Ubicación</h4>
+                                <p>calle del éxito 321</p>
+                            </div>
+                        </div>
+                        <div class="icon-flex">
+                            <div>
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>agentes@bienesraices.com</p>
+                            </div>
+                        </div>
+                            <div class="icon-flex final-map">
+                            <div>
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+ 34 053 920 193</p>
+                            </div>
+                        </div>
+                        <div class="form-iframe">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d194389.02140733364!2d-3.7276194687773105!3d40.42372525003066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1701038871281!5m2!1ses!2ses" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+            </div>            
+        </div>
+    </main>
+    
+    {% include "includes/footer.html" %}
+    <!--=============== JavaScript personalizado ===============-->
+    <script src="{% static 'js/contacto.js' %}"></script>
+</body>
+</html>

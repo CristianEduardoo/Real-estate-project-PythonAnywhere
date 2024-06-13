@@ -1,0 +1,112 @@
+{% extends "includes/head.html" %}
+{% load static %}
+{% block head %}
+    <!--=============== Bibliotecas y frameworks ===============-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--=============== CSS - Personalizado ===============-->
+    {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}?v=6" /> {% endcomment %}
+{% endblock head %}
+
+{% block body %}
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="principal">
+            <section class="section1">
+                <div class="probando-img"></div>
+            </section>
+            <section class="section2">
+                <div class="">
+                    <form class="form" action="{% url 'namespaceusers:login' %}" method="POST"> <!-- Valida los campos -->
+                        {% csrf_token %}
+                        <h1>Bienvenido</h1>
+                        <p>Estamos encantados de verte de vuelta</p>
+                        <div class="group login-input">
+                            <div class="field-group">
+                                <i class="fa-regular fa-user icon"></i>
+                                <input class="input-field" id="email" type="email" name="email" placeholder="Email" required>
+                            </div>
+                            <!-- aqui el bloque de error de user -->
+                        </div>
+
+                        <div class="group login-input">
+                            <div class="field-group">
+                                <i class="fa-solid fa-lock icon"></i>
+                                <input class="input-field" id="password" type="password" name="password" placeholder="Contraseña" required>
+                                <i class="fa-regular fa-eye-slash login__eye" id="login-eye"></i>
+                            </div>
+                            <!-- aqui el bloque de error de password -->
+                        </div>
+
+                        <div class="olvidaste olvidaste-rigistro">
+                            <p>¿Aún no tienes cuenta?</p>
+                            <a href="{% url 'namespaceusers:user-register' %}">Regístrate</a>
+                        </div>
+
+                        {% comment %} 
+                            <div class="olvidaste">
+                                <a href="https://myaccount.google.com/" target="_blank">¿Olvidaste la contraseña?</a>
+                            </div>
+                        {% endcomment %}
+
+                        <div class="group div-enviar">
+                            <input class="enviar" type="submit" value="Iniciar Sesión">
+                        </div>
+                            <!-- Solo en local -->
+                            <div class="group-4">
+                                <p>Login <span>con otros</span></p>
+                                <img class="subtract" src="{% static 'img/login/subtract_x2.svg' %}"/>
+                            </div>
+
+                            <div class="con-otros">
+                                <a class="btn-gogle" href="{% url 'social:begin' 'google-oauth2' %}" target="_blank">
+                                    <div class="separacion">
+                                        <img loading="lazy" src="{% static 'img/login/googleicon149-oyh4.svg' %}"  alt="GoogleIcon149" /><span>Login con
+                                            Google</span>
+                                    </div>
+                                </a>
+
+                                <a class="btn-facebook" href="{% url 'social:begin' 'facebook' %}" target="_blank">
+                                    <div class="separacion">
+                                        <img loading="lazy" src="{% static 'img/login/square-facebook.svg' %}" alt="GoogleIcon149" /><span>Login con Facebook</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Solo en local -->
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    {% include "includes/footer.html" %}
+    
+    <script>
+        // data-login-url="{% url 'namespaceusers:login' %}"
+        // let loginUrl = "{% url 'namespaceusers:login' %}";
+        // console.log(loginUrl);
+        // onsubmit="return validateForm()"
+    </script> 
+   
+    <!--=============== JavaScript personalizado ===============-->
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+
+</html>
+{% endblock body %}
+
+
+{% comment %} 
+    <input type="hidden" name='next' value="{{next}}"> 
+    // next, que generalmente se usa para redirigir al usuario a una página específica después de completar una acción. 
+
+    action='{% url 'login' %}' 
+    // la URL a la que se enviarán los datos del formulario.
+    // a una vista de inicio de sesión.
+{% endcomment %}

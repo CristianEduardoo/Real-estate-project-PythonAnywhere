@@ -1,0 +1,42 @@
+/* ==================== Form - CreateBlog  ==================== */
+.formCreatedBlog{
+    max-width: 90%;
+
+    @include tablet{
+        width: 100%;
+    }
+}
+
+.div-createBlog{
+    @include tablet{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 3rem;
+    }
+}
+
+.group-createBlog{
+    input{
+        margin-top: 0rem;
+    }
+
+    textarea{
+        margin-top: 0rem;
+    }
+}
+
+/* ==================== CreatedBlog - Blog Details  ==================== */
+
+.div_blogDetails {
+    margin-bottom: 5rem;
+    
+    @include desktop {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 5rem;
+
+        .informacion-meta{
+            margin-top: 0rem;
+        }
+    }
+}

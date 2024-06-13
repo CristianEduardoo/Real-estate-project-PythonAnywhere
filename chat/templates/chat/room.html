@@ -1,0 +1,46 @@
+{% extends "baseChat.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h2>{{ room.name }}</h2>
+                <h4 class="text-danger">Usuario: {{ request.user }}</h4>
+                <hr>
+                <!-- Se maneja con JS -->
+                <div id="boxMessages"> </div>
+                
+                <!-- INPUT DE CHAT -->
+                <div id="chat">
+                    <input class="form-control" type="text" id="inputMessage" placeholder="Escribe un mensaje...">
+        
+                    <button class="btn btn-success mt-2" type="submit" id="btnMessage" >Enviar</button>
+        
+                    <a class="btn btn-primary mt-2 float-end" href="{% url 'namespaceraices:main' %}">Salir</a>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Usuarios Conectados</h5>
+                        <ul class="list-group" id="usersList">
+                            
+                        </ul>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* === pasamos valores por JS === */
+        let user = '{{ request.user.username }}';
+        let room_id = '{{ room.id }}';
+    </script>
+   
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
+{% endblock %}

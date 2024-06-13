@@ -1,0 +1,97 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+{% include "includes/head.html" %}
+
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="principal">
+            <section class="section1">
+                <div class="probando-img"></div>
+            </section>
+            <section class="section2">
+            <form class="formCreatedBlog" action="{% url 'namespaceblog:blog-register' %}" method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1>Registrar un nuevo Blog</h1>
+
+                <div class="div-createBlog">
+                    <div class="group">
+                        <div class="group-createBlog">
+                            <label for="name">Nombre del titular</label>
+                            <input id="name" type="text" name="{{ registrar_blog.nombre_titular.name }}" value="{{ registrar_blog.nombre_titular.value }}" maxlength="50" disabled>
+                        </div>
+                        <!-- aqui el bloque de error de Nombre del titulars -->
+                    </div>
+
+                    <div class="group">
+                        <div class="group-createBlog">
+                            <label for="title">Título del blog <span>*</span></label>
+                            <input id="title" type="text" name="{{ registrar_blog.title.name }}" maxlength="50" required>
+                        </div>
+                        <!-- aqui el bloque de error de nombre del título -->
+                    </div>
+
+                    <div class="group">
+                        <div class="group-createBlog">
+                            <label for="img_jpg">Imagen JPG <span>* obligatorio</span></label>
+                            <input id="img_jpg" type="file" name="{{ registrar_blog.img_jpg.name }}" accept=".jpg" required >
+                        </div>
+                        <!-- aqui el bloque de error de Imagen JPG * -->
+                    </div>
+
+                    <div class="group">
+                        <div class="group-createBlog">
+                            <label for="img_webp">Imagen WEBP</label>
+                            <input id="img_webp" type="file" name="{{ registrar_blog.img_webp.name }}" accept=".webp">
+                        </div>
+                        <!-- aqui el bloque de error de Imagen WEBP * -->
+                    </div>
+
+                    <div class="group">
+                        <div class="group-createBlog">
+                            <label for="descripcion">Descripción <span>*</span></label>
+                            <input id="descripcion" type="text" name="{{ registrar_blog.descripcion.name }}" maxlength="260" required>
+                        </div>
+                        <!-- aqui el bloque de error de Descripción -->
+                    </div>
+
+                    <div class="group">
+                        <div class="group-createBlog">
+                            <label for="fecha">Fecha</label>
+                            <input id="fecha" type="date" name="{{ registrar_blog.fecha.name }}" value="{{ registrar_blog.fecha.value }}" disabled>
+                        </div>
+                        <!-- aqui el bloque de error de Fecha -->
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="group-createBlog">
+                        <label for="contenido">Contenido <span>*</span></label>
+                        <textarea id="contenido" name="{{ registrar_blog.contenido.name }}" cols="40" rows="10" required></textarea>
+                    </div>
+                    <!-- aqui el bloque de error de Contenido -->
+                </div>
+
+                <div class="div-enviar btn-negro">
+                    <input class="enviar" type="submit" value="Crear Blog">
+                </div>
+                {% if registrar_blog.errors %}
+                    {{registrar_blog.errors}}
+                {% endif %}  
+            </form>
+            </section>
+        </div>             
+    </main>
+
+{% include "includes/footer.html" %}
+<!--=============== JavaScript personalizado ===============-->
+<script src="{% static 'js/createdBlog.js' %}"></script>
+</body>
+
+</html>

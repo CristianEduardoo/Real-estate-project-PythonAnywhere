@@ -1,0 +1,20 @@
+{% extends "baseChat.html" %}
+
+{% block content %}
+    <h2>Bienvenido a la sala de chat!!!</h2>
+    
+
+    {% if error_message %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ error_message }}</strong> Comuníquese con los administradores
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+    
+    {% comment %} Desde viewHome {% endcomment %}
+    <div>
+        <a class="btn btn-success" href="{% url 'namespacechat:room-datail' room_name.id %}">{{ room_name.name }}</a>
+
+        <a class="btn btn-primary" href="{% url 'namespaceraices:main' %}">Salir</a>
+    </div>
+{% endblock %}

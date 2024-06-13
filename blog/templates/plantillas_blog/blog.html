@@ -1,0 +1,66 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+{% include "includes/head.html" %}
+
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+    <main class="contenedor sidebar">
+        <div class="entrada-bienvenido">
+            {% if request.user.is_authenticated %}
+                <div>
+                    <h1>Nuestro Blog</h1>
+                </div>
+            {% comment %} 
+                <div class="entrada-sesion">
+                    <div>
+                        <p>Bienvenido {{ request.user.username }}</p>
+                        <a href="{% url 'namespacechat:room-datail' room.id %}">{{ room.name }}</a>
+                    </div>
+                    <div>
+                        <p ><a href="{% url 'namespaceblog:blog-register' %}">Publicar blog</a></p>
+                    </div> 
+                </div>
+            {% endcomment %}          
+            {% else %}
+                <div class="entrada-nosesion">
+                    <div class=""> 
+                        <p>¿Te gustaria ser parte de nuestra comunidad?</p>
+                        <p>¿Quieres publicar un blog?</p>
+                        <p><a href="{% url 'namespaceusers:user-register' %}">¡Registrate!</a></p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        {% for post in clave %}
+            <article class="entrada-blog"> <!-- entrada-blog -->
+                <div>
+                    <picture>
+                        {% if post.img_webp %}
+                            <source srcset="{{post.img_webp.url}}" type="image/webp">
+                        {% endif %}
+                            <img loading="lazy" width="200" height="300" src="{{ post.img_jpg.url }}" alt="Imagen Blog">    
+                    </picture>
+                </div>
+
+                <div class="texto-entrada">
+                    <a href="{% url 'namespaceblog:blog_details' post.id %}">
+                        <h4>{{ post.title }}</h4>
+                        <p class="informacion-meta">Escrito el: <span class="spafecha">{{ post.fecha }}</span> por: <span>{{ post.nombre_titular }}</span> </p>
+
+                        <p>{{ post.descripcion }}</p>
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+    </main>
+    {% include "includes/footer.html" %}
+</body>
+
+</html>

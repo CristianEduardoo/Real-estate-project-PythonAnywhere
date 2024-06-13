@@ -1,0 +1,128 @@
+{% extends "includes/head.html" %}
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+{% block head %}
+    <!--=============== Bibliotecas y frameworks ===============-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--=============== CSS ===============-->
+    {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}?v=5" /> {% endcomment %}
+{% endblock head %}
+
+{% block body %}
+
+<body class="position-img">
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="principal">
+            <section class="section1">
+                <div class="probando-img"></div>
+            </section>
+            <section class="section2">
+                <div class="">
+                    <form class="form-register" action="{% url 'namespaceusers:user-register' %}" method="POST">
+                        {% csrf_token %}
+                        <h1>Registro</h1>
+                        <p>Rellena todos los campos</p>
+                        <div class="group login-input">
+                            <div class="field-group">
+                                <i class="fa-solid fa-user icon"></i>
+                                <input class="input-field" id="username" type="text" name="username"
+                                    placeholder="Nombre de usuario">
+                            </div>
+                            <!-- aqui el bloque de error de user -->
+                        </div>
+
+                        <div class="divide-campos">
+                            <div class="group login-input">
+                                <div class="field-group">
+                                    <i class="fa-regular fa-user icon"></i>
+                                    <input class="input-field" id="first_name" type="text" name="first_name" placeholder="Nombre">
+                                </div>
+                                <!-- aqui el bloque de error de name -->
+                            </div>
+                            
+                            <div class="group login-input">
+                                <div class="field-group">
+                                    <i class="fa-regular fa-user icon"></i>
+                                    <input class="input-field" id="last_name" type="text" name="last_name" placeholder="Apellidos">
+                                </div>
+                                <!-- aqui el bloque de error de apellidos -->
+                            </div>
+                        </div>
+
+                        <div class="divide-campos">
+                            <div class="group login-input">
+                                <div class="field-group">
+                                    <i class="fa-regular fa-envelope icon"></i>
+                                    <input class="input-field" id="email" type="email" name="email" placeholder="Correo electrónico">
+                                </div>
+                                <!-- aqui el bloque de error de email -->
+                            </div>
+                            
+                            <div class="group login-input">
+                                <div class="field-group">
+                                    <i class="fa-solid fa-phone icon"></i>
+                                    <input class="input-field" id="phone" type="tel" name="phone" placeholder="Télefono">
+                                </div>
+                                <!-- aqui el bloque de error de telefono -->
+                            </div>
+                        </div>
+
+                        <div class="group login-input">
+                            <div class="field-group">
+                                <i class="fa-solid fa-lock icon"></i>
+                                <input class="input-field" id="password1" type="password" name="password1"
+                                    placeholder="Contraseña">
+                                <i class="fa-regular fa-eye-slash login__eye" id="login-eye1"></i>
+                            </div>
+                            <!-- aqui el bloque de error de password1 -->
+                        </div>
+
+                        <div class="group login-input">
+                            <div class="field-group">
+                                <i class="fa-solid fa-lock icon"></i>
+                                <input class="input-field" id="password2" type="password" name="password2"
+                                    placeholder="Repita contraseña">
+                                <i class="fa-regular fa-eye-slash login__eye" id="login-eye2"></i>
+                            </div>
+                            <!-- aqui el bloque de error de password no coinciden-->
+                        </div>
+                        
+                        <div class="group extra-term">
+                            <div class="terminos"> {% comment %} class="terminos" => dark mode {% endcomment %}
+                                <input id="terminos" type="checkbox" name="terminos">
+                                <label for="terminos">He aceptado los terminos y condiciones</label>
+                            </div>
+                            <!-- aqui el bloque de error de terminos y condiciones -->
+                        </div>
+
+                        <div class="group div-enviar">
+                            <input class="enviar" type="submit" value="Registrate">
+                        </div>
+                        <div class="terminos-login">
+                            <div class="log-term">
+                                <p>¿Ya dispones de una cuenta?</p>
+                                <a href="{% url 'login' %}">Inicia Sesión </a>
+                            </div>
+                                <p><a href="#">Terminos y condiciones</a></p>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    {% include "includes/footer.html" %}
+
+    <!--=============== JavaScript personalizado ===============-->
+    <script src="{% static 'js/script_register.js' %}"></script>
+</body>
+
+</html>
+{% endblock body %}
+

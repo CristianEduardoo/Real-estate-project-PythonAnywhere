@@ -1,0 +1,30 @@
+.contenido-nosotros {
+    margin: 5rem 0;
+    @include desktop{
+        @include grid(2, 5rem)
+    }
+}
+
+.texto-nosotros blockquote{
+    font-size: 2.5rem;
+    font-weight: $black;
+    text-align: center;
+    margin: 0rem 0rem 1.5rem 0rem;
+
+    @include desktop{
+        font-size: 4rem;
+    }
+}
+
+.texto-nosotros{
+    margin: 2rem 0rem;
+
+    @include desktop{
+        margin: 0rem;
+    }
+
+    p{
+        line-height: 1.7;
+        letter-spacing: .5px;
+    }
+}

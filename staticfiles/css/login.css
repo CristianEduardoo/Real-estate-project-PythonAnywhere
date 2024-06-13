@@ -1,0 +1,257 @@
+/* ------------------------------------- Login --------------------------------------- */
+.principal {
+    min-height: 100vh;
+}
+
+.section1,
+.section2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+.section1 {
+    margin-bottom: 6rem;
+}
+
+.probando-img {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .probando-img {
+        display: block;
+    }
+}
+
+.probando-img {
+    background-image: url("../img/destacadas/destacada.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* width: 100%;
+    min-height: 15rem;  => con img de Diantum */
+    box-shadow: 0rem 1rem 1rem rgba(32, 32, 32, 0.5);
+}
+
+@media (min-width:992px) {
+    .principal {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: column;
+
+    }
+
+    .probando-img {
+        height: 95%;
+        width: 90%;
+        border-radius: 35px;
+    }
+
+    .section1 {
+        margin-bottom: 0rem;
+        grid-column: 2/3;
+    }
+
+}
+
+.form {
+    width: 33rem;
+    margin: 0 auto;
+}
+
+@media (min-width:768px) {
+    .form {
+        width: 40rem;
+    }
+}
+
+.form h1,
+p {
+    margin: 0rem;
+    text-align: center;
+}
+
+.form h1 {
+    font-size: 5.5rem;
+}
+
+.group input {
+    border-radius: 1rem;
+    background: #f2f2f2;
+    margin: 1rem 0rem;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+}
+
+.login-input input {
+    padding-left: 4rem;
+}
+
+.input-field {
+    font-size: 1.4rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.div-enviar input:hover {
+    cursor: pointer;
+}
+
+.group-4 {
+    position: relative;
+    margin: 1rem 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.group-4 p {
+    font-weight: 700;
+}
+
+.group-4 span {
+    font-weight: 300;
+}
+
+.subtract {
+    position: absolute;
+    left: 50%;
+    top: 1.7rem;
+    translate: -50% -50%;
+    width: 100%;
+    height: 1rem;
+}
+
+.con-otros a {
+    border-radius: 1rem;
+    border: 0.1rem solid #1c1c1c;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0rem;
+    padding: 1rem;
+    width: 100%;
+    text-decoration: none;
+}
+
+.separacion {
+    display: flex;
+    gap: 1rem;
+    align-items: end;
+}
+
+.field-group {
+    display: flex;
+    /* Hace que los elementos se coloquen en una fila */
+    align-items: center;
+    /* Centra verticalmente los elementos */
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    left: 1.5rem;
+    /* Ajusta el margen izquierdo del icono */
+}
+
+.login__eye {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+}
+
+.olvidaste {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.olvidaste a {
+    text-decoration: none;
+    color: #0000EE;
+}
+
+.olvidaste p {
+    font-size: 1.6rem;
+}
+
+/*=============== Boton envio/registrar ===============*/
+
+.div-enviar input {
+    background: #1c1c1c;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+}
+
+/*=============== Img - google - facebook ===============*/
+
+.separacion img {
+    width: auto;
+}
+
+/* ------------------------------------- Registro --------------------------------------- */
+.form-register {
+    width: 33rem;
+    margin: 0 auto;
+}
+
+@media (min-width:768px) {
+    .form-register {
+        width: 50rem;
+    }
+
+    .divide-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+    }
+}
+
+.form-register h1,
+p {
+    margin: 0rem;
+}
+
+.form-register h1 {
+    font-size: 5.5rem;
+}
+
+.extra-term {
+    margin-top: 0.5rem;
+}
+
+.terminos {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.group input[type="checkbox"] {
+    border-radius: 1rem;
+    margin: 0;
+    padding: 0;
+    width: 1.5rem;
+}
+
+.terminos-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.terminos-login a {
+    color: #0000EE;
+}
+
+.log-term {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}

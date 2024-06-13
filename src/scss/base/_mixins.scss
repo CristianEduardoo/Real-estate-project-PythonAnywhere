@@ -1,0 +1,46 @@
+/** Media Queries **/
+@mixin phone {
+    @media (min-width: #{$phone}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin desktopXL {
+    @media (min-width: #{$desktopXL}) {
+        @content;
+    }
+}
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    grid-template-columns: repeat($columnas, 1fr);
+    gap: $espaciado;
+}
+
+@mixin boton($bgcolor, $diplay) { // $color de fondo y $display, espacio total o no.. 
+    background-color: $bgcolor;
+    display: $diplay;
+    color: $blanco;
+    font-weight: $bold;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    border: none;
+
+    &:hover {
+        background-color: darken($bgcolor, $amount: 5);
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,124 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+{% include "includes/head.html" %}
+
+<body>
+    <header class="header inicio">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+            <h1>Agencia Inmobiliaria Exclusiva en Venta de Casas y Departamentos</h1>
+        </div>
+    </header>
+    <main class="contenedor">
+        <h1>Mas sobre Nosotros</h1>
+        <div class="iconos_nosotros">
+            <div class="icono">
+                <img src="{% static 'img/iconos/icono1.svg' %}" alt="Icono Seguridad" loading="lazy">
+                <h3>Seguridad</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit neque hac tristique, a nisl purus ultrices nunc accumsan molestie etiam habitant eros curae, orci aliquam at sociosqu fames convallis pharetra ut eleifend.</p>
+            </div>
+            <div class="icono">
+                <img src="{% static 'img/iconos/icono2.svg' %}" alt="Icono Precio" loading="lazy">
+                <h3>Precio</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit neque hac tristique, a nisl purus ultrices nunc accumsan molestie etiam habitant eros curae, orci aliquam at sociosqu fames convallis pharetra ut eleifend.</p>
+            </div>
+            <div class="icono">
+                <img src="{% static 'img/iconos/icono3.svg' %}" alt="Icono Tiempo" loading="lazy">
+                <h3>A Tiempo</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit neque hac tristique, a nisl purus ultrices nunc accumsan molestie etiam habitant eros curae, orci aliquam at sociosqu fames convallis pharetra ut eleifend.</p>
+            </div>
+        </div>
+    </main>
+    <section class="contenedor">
+        <h2>Casas y Departamentos en venta</h2>
+        <div class="contenedor-anuncios"> <!-- contenedor inicio -->
+            {% for propiedad in solo_tres %}
+                <div class="anuncio"> <!-- anuncio inicio -->
+                    <picture>
+                        {% comment %} <source srcset="{{ propiedad.img.url }}" type="image/webp"> {% endcomment %}
+                        <img loading="lazy" width="200" height="300" src="{{ propiedad.img.url }}" alt="Imagen de la propiedad">
+                    </picture>
+                    <div class="contenido-anuncio">
+                        <h3>{{ propiedad.titulo }}</h3>
+                        <p class="alturamin">{{ propiedad.descripcion }}</p>
+                        <p><span class="precio">{{ propiedad.precio }}€</span></p>
+
+                        <ul class="iconos-caracteristicas">
+                            <li>
+                                <img loading="lazy" src="{% static 'img/iconos/icono_wc.svg' %}" alt="icono wc" />
+                                <p>{{ propiedad.wc }}</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="{% static 'img/iconos/icono_estacionamiento.svg' %}" alt="icono estacionamiento" />
+                                <p>{{ propiedad.garaje }}</p>
+                            </li>
+                            <li>
+                                <img loading="lazy" src="{% static 'img/iconos/icono_dormitorio.svg' %}" alt="icono hanitaciones" />
+                                <p>{{ propiedad.habitaciones }}</p>
+                            </li>
+                        </ul>
+
+                        <a href="{% url 'namespaceraices:anuncio_detalles' propiedad.id %}" class="btn-amarillo-block">Ver propiedad</a>
+                    </div>
+                </div> <!-- fin anuncio -->
+            {% endfor %}
+        </div> <!-- fin contenedor -->
+
+        <div class="ver-todas">
+            <a href="{% url 'namespaceraices:anuncios' %}" class="btn-verde">Ver todas</a>
+        </div>
+    </section>
+
+    <section class="imagen-contacto">
+        <div class="contenedor info">
+            <h2>Encuentra la casa de tus sueños</h2>
+            <p>Llena el formulario de contacto y un asesor se pondrá en contacto contigo</p>
+            <a href="{% url 'namespaceraices:contacto' %}" class="btn-amarillo">Contáctanos</a>
+        </div>
+    </section>
+
+    <div class="contenedor seccion-inferior">
+        <section> <!-- section 1 -->
+            <h3 class="h3Index">Nuestro Blog</h3>
+            {% for blog in solo_dos %}
+                <article class="entrada-blog"> <!-- blog Inicio -->
+                    <div>
+                        <picture>
+                            {% if blog.img_webp %}
+                                <source srcset="{{ blog.img_webp.url }}" type="image/webp">
+                            {% endif %}
+                                <img loading="lazy" width="200" height="300" src="{{ blog.img_jpg.url }}" alt="Texto Entrada Blog">
+                        </picture>
+                    </div>
+
+                    <div class="texto-entrada">
+                        <a href="{% url 'namespaceblog:blog_details' blog.id %}">
+                            <h4>{{ blog.title }}</h4>
+                            <p class="informacion-meta">Escrito el: <span class="spafecha">{{ blog.fecha }}</span> por: <span>{{ blog.nombre_titular }}</span> </p>
+
+                            <p>{{ blog.descripcion }}</p>
+                        </a>
+                    </div>
+                </article>
+            {% endfor %}
+        </section> <!-- Fin section 1 -->
+
+        <section class="testimoniales"> <!-- section 2 -->
+            <h3 class="h3Index">Testimoniales</h3>
+            <div class="testimonial">
+                {% for testimonial in testimoniales %}
+                    <div class="mySlides fade">
+                        <q>{{ testimonial.contenido }}</q>
+                        <p class="author">- {{ testimonial.usuario.username }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section> <!-- Fin section 2 -->
+    </div>
+
+    {% include "includes/footer.html" %}
+</body>
+
+</html>

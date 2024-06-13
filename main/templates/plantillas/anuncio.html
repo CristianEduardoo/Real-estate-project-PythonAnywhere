@@ -1,0 +1,76 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+{% include "includes/head.html" %}
+
+<body> 
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+
+    <main class="contenedor contenido-centrado">
+        <h1>{{ details.titulo }}</h1>
+
+        <div class="div_blogDetails details">
+            <div class="propiedad-detail">
+                <picture>
+                    {% comment %} <source srcset="{{ details.img.url }}" type="image/webp"> {% endcomment %}
+                    <img loading="lazy" src="{{ details.img.url }}" alt="imagen de la propiedad">
+                </picture>
+
+                <p><span class="precio">{{ details.precio }}€</span></p>
+
+                <ul class="iconos-caracteristicas">
+                    <li>
+                        <img class="icono" loading="lazy" src="{% static 'img/iconos/icono_wc.svg' %}" alt="icono wc">
+                        <p>{{ details.wc }}</p>
+                    </li>
+                    <li>
+                        <img class="icono" loading="lazy" src="{% static 'img/iconos/icono_estacionamiento.svg' %}" alt="icono estacionamiento">
+                        <p>{{ details.garaje }}</p>
+                    </li>
+                    <li>
+                        <img class="icono" loading="lazy" src="{% static 'img/iconos/icono_dormitorio.svg' %}" alt="icono habitaciones">
+                        <p>{{ details.habitaciones }}</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="informacion-meta">{{ details.contentido }}</p>
+            </div>
+        </div>
+
+    </main>
+
+
+
+
+    {% include "includes/footer.html" %}
+</body>
+
+</html>
+
+
+{% comment %} 
+    <main class="contenedor">
+    <h1>Probando contenido</h1>
+        <h2>{{ details.titulo }}</h2>
+            <p>Precio: {{ details.precio }}</p>
+            <p>Descripción: {{ details.descripcion }}</p>
+            <p>Habitaciones: {{ details.habitaciones }}</p>
+            <p>WC: {{ details.wc }}</p>
+            <p>Garaje: {{ details.garaje }}</p>
+            <p>Fecha de Alta: {{ details.fecha_alta }}</p>
+            <p>Vendido: {{ details.vendido }}</p>
+            <p>Cliente: {{ details.cliente }}</p>
+            <p>Vendedor: {{ details.vendedor }}</p>
+            <p>Contenido: {{ details.contentido }}</p>
+            <p><img loading="lazy" width="200" height="300" src="{{ details.img.url }}" alt="Imagen de la propiedad"></p>
+            <!-- Puedes añadir más campos aquí según tus necesidades -->
+    </main>
+
+{% endcomment %}

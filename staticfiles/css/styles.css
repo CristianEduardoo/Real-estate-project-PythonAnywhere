@@ -1,0 +1,53 @@
+/* ------------------------------------- GLOBALES --------------------------------------- */
+html {
+    font-size: 62.5%; /* truco para formatear la pag y usar la unidad de medida rem, en html y body */
+    box-sizing: border-box; /* box-sizing, Vine de PaulIrishWeb para facilitar el modelo caja en css "box model"  */
+    font: 1.5rem / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
+    /* /1.5 ...Este valor representa el espaciado entre líneas. */
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px; /* Con estas 2 lineas (html y body) ya podemos escribir codigo en rem. 1rem = 10px... 60px=6rem */
+    padding: 1rem;
+}
+
+button{
+    padding: 0.4rem;
+}
+/* ------------------------------------------------------------------------------------- */
+
+h1,h2{
+    text-align: center;
+}
+
+.contentedor-main{
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+.contentedor-login{
+    max-width: 20rem;
+    margin: 0 auto;
+}
+
+.contentedor-form{
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.derecha{
+    display: flex;
+    justify-content: end;
+}
+
+.extremos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,255 @@
+openapi: 3.0.3
+info:
+  title: API-PROPIEDADES
+  version: 4.2.10
+  description: Lista de propiedades
+paths:
+  /api/v1/propiedades/:
+    get:
+      operationId: api_v1_propiedades_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Propiedades'
+          description: ''
+    post:
+      operationId: api_v1_propiedades_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Propiedades'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Propiedades'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Propiedades'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Propiedades'
+          description: ''
+  /api/v1/propiedades/{id}/:
+    get:
+      operationId: api_v1_propiedades_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this propiedades.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Propiedades'
+          description: ''
+    put:
+      operationId: api_v1_propiedades_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this propiedades.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Propiedades'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Propiedades'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Propiedades'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Propiedades'
+          description: ''
+    patch:
+      operationId: api_v1_propiedades_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this propiedades.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPropiedades'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPropiedades'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPropiedades'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Propiedades'
+          description: ''
+    delete:
+      operationId: api_v1_propiedades_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this propiedades.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    PatchedPropiedades:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        titulo:
+          type: string
+          maxLength: 45
+        precio:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        img:
+          type: string
+          format: uri
+        descripcion:
+          type: string
+          maxLength: 260
+        contentido:
+          type: string
+        habitaciones:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        wc:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        garaje:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        fecha_alta:
+          type: string
+          format: date
+        vendido:
+          type: boolean
+    Propiedades:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        titulo:
+          type: string
+          maxLength: 45
+        precio:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        img:
+          type: string
+          format: uri
+        descripcion:
+          type: string
+          maxLength: 260
+        contentido:
+          type: string
+        habitaciones:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        wc:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        garaje:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        fecha_alta:
+          type: string
+          format: date
+        vendido:
+          type: boolean
+      required:
+      - contentido
+      - descripcion
+      - garaje
+      - habitaciones
+      - id
+      - img
+      - precio
+      - titulo
+      - wc
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

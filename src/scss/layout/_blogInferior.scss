@@ -1,0 +1,99 @@
+/* ========== main parte inferios blog/testimoniales ========== */
+@include desktop {
+    .seccion-inferior {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 10rem;
+    }
+}
+
+
+
+.entrada-blog {
+    margin-bottom: 10rem;
+
+    @include tablet {
+        margin-bottom: 5rem;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+    }
+
+    &:last-of-type {
+        // asi el ultimo elemento no tiene margin
+        margin-bottom: 7rem;
+    }
+}
+
+.texto-entrada {
+
+    margin-top: 1.5rem;
+
+    @include tablet {
+        margin: 0;
+    }
+
+    a {
+        color: $negro;
+    }
+
+    h4 {
+        margin: 0;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 15rem;
+            height: .4rem;
+            background: $verde;
+            margin-top: 1rem;
+        }
+
+    }
+
+    .spafecha {
+        margin-right: 1rem;
+    }
+}
+
+.informacion-meta {
+    span {
+        color: $amarillo;
+        padding: 0.3rem;
+    }
+}
+
+.entrada-bienvenido{
+    margin: 5rem 0rem;
+    text-align: center;
+}
+
+.entrada-sesion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    p{
+        margin: 0rem;
+    }
+}
+
+.entrada-nosesion{
+    display: flex;
+    justify-content: center;
+
+    p {
+        margin: 0rem;
+    }
+
+    a{
+        color: $violeta;
+    }
+
+}

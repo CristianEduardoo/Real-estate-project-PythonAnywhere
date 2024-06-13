@@ -1,0 +1,40 @@
+{% extends "includes/head.html" %}
+{% load static %}
+{% block head %}
+    <!--=============== Bibliotecas y frameworks ===============-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--=============== CSS ===============-->
+    {% comment %} <link rel="stylesheet" href="{% static 'css/login.css' %}?v=5" /> {% endcomment %}
+{% endblock head %}
+
+{% block body %}
+<body> 
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+
+    <main> {% comment %} class="contenedor contenido-centrado" {% endcomment %}
+        <div class="principal">
+            <section class="section1">
+                <div class="probando-img"></div>
+            </section>
+            <section class="section2">
+                <div class="div-LoggedOut">
+                    <h2>Sesión cerrada correctamente</h2>
+                    <p>¿Quieres iniciar sessión?</p>
+                    <div class="con-otros LoggedOut_btn">
+                        <a href="{% url 'login' %}">Iniciar sesión</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    {% include "includes/footer.html" %}
+</body>
+
+</html>
+{% endblock body %}

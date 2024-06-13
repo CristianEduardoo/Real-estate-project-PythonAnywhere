@@ -1,0 +1,49 @@
+{% load static %} {% comment %} Cargar los archivos estaticos {% endcomment %}
+
+{% include "includes/head.html" %}
+
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                {% include "includes/barra_movil.html" %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="principal">
+            <section class="section1">
+                <div class="probando-img"></div>
+            </section>
+            <section class="section2">
+                <form class="formTestimonials" action="{% url 'namespaceraices:testimonials' %}" method="POST"> <!-- Valida los campos -->
+                    {% csrf_token %}
+                    <h1>Hola {{ request.user.username }} 👋</h1>
+                    <h3>Dejanos una reseña</h3>
+                    <p>Puedes escribir un máximo de 20 palabras</p>
+                    <div class="group">
+                        <div class="group-testimonials">
+                            {% comment %} <input class="input-field" id="email" type="email" name="email"  required> cols="60" rows="10" {% endcomment %}
+                            <textarea id="contenido" name="{{ form_testimoniales.contenido.name }}" placeholder="Escribe una breve reseña" required></textarea>
+                        </div>
+                        <!-- aqui el bloque de error de reseña -->
+                    </div>
+                    <div class="div-enviar btn-negro">
+                        <input class="enviar" type="submit" value="Enviar">
+                    </div>
+                    {% if form_testimoniales.errors %}
+                        {{form_testimoniales.errors}}
+                    {% endif %}  
+                </form>
+            </section>
+        </div>
+    </main>
+
+    {% include "includes/footer.html" %}
+
+    <!--=============== JavaScript personalizado ===============-->
+    <script src="{% static 'js/testimoniales.js' %}"></script>
+</body>
+
+</html>
