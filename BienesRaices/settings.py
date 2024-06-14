@@ -3,7 +3,7 @@ from environ import Env
 import dj_database_url
 import os  # Necesaria para el Login
 
-
+# Variables Globales
 env = Env()
 Env.read_env()
 
@@ -122,29 +122,32 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "BienesRaices",
-        "USER": "admin",
-        "PASSWORD": "123qwe@@",
-        "HOST": "db", # from my docker-compose.yml
-        "PORT": "5432"
+
+DB_LOCALLY = False
+
+if ENVIRONMENT == "development" or DB_LOCALLY == True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "Real-estate-project",
+            "USER": "root",
+            "PASSWORD": "",
+            "HOST": "localhost",
+            "PORT": "3306",
+        }
     }
-}
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "Real-estate-project",
-#         "USER": "root",
-#         "PASSWORD": "",
-#         "HOST": "localhost",
-#         "PORT": "3306",
-#     }
-# }
-
-DATABASES["default"] = dj_database_url.parse(env("DATABASE_URL"))
+else:
+    # DATABASES["default"] = dj_database_url.parse(env("DATABASE_URL"))
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "BienesRaices",
+            "USER": "admin",
+            "PASSWORD": "123qwe@@",
+            "HOST": "db",  # from my docker-compose.yml
+            "PORT": "5432",
+        }
+    }
 
 
 # Password validation

@@ -20,3 +20,7 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
     # Devuelve el nombre como su representación de cadena
+    
+    
+    
+# AQUI ES MEJOR USAR DIRECTAMENTE EL ResizedImageField(Size[600,600], quality=85, upload_to...)   
