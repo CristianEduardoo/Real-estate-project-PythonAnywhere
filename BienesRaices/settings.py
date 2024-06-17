@@ -1,6 +1,5 @@
 from pathlib import Path
 from environ import Env 
-import dj_database_url
 import os  # Necesaria para el Login
 
 # Variables Globales
@@ -37,7 +36,7 @@ else:
     DEBUG = False
 
 # Solo va mi dominio ;)
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["pypycris.pythonanywhere.com"]
 
 # Application definition "channels",  # Biblioteca para manejar conexiones asíncronas
 # Aplicaciones de terceros se recomienda primero en la lista
@@ -123,21 +122,18 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-DB_LOCALLY = False
-
-if ENVIRONMENT == "development" or DB_LOCALLY == True:
+if ENVIRONMENT == "development":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": "Real-estate-project",
-            "USER": "root",
-            "PASSWORD": "",
-            "HOST": "localhost",
+            "NAME": "pypycris$default",
+            "USER": "pypycris",
+            "PASSWORD": "123qwe@@",
+            "HOST": "pypycris.mysql.pythonanywhere-services.com",
             "PORT": "3306",
         }
     }
 else:
-    # DATABASES["default"] = dj_database_url.parse(env("DATABASE_URL"))
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -149,6 +145,17 @@ else:
         }
     }
 
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "Real-estate-project",
+#         "USER": "root",
+#         "PASSWORD": "",
+#         "HOST": "localhost",
+#         "PORT": "3306",
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
