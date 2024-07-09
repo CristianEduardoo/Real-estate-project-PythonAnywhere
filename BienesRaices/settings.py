@@ -36,7 +36,7 @@ else:
     DEBUG = False
 
 # Solo va mi dominio ;)
-ALLOWED_HOSTS = ["pypycris.pythonanywhere.com"]
+ALLOWED_HOSTS = ["pypycris.pythonanywhere.com", "localhost", "127.0.0.1"]
 
 # Application definition "channels",  # Biblioteca para manejar conexiones asíncronas
 # Aplicaciones de terceros se recomienda primero en la lista
@@ -126,10 +126,10 @@ if ENVIRONMENT == "development":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": "pypycris$default",
-            "USER": "pypycris",
-            "PASSWORD": "123qwe@@",
-            "HOST": "pypycris.mysql.pythonanywhere-services.com",
+            "NAME": "Real-estate-project",
+            "USER": "root",
+            "PASSWORD": "",
+            "HOST": "localhost",
             "PORT": "3306",
         }
     }
@@ -138,8 +138,8 @@ else:
         "default": {
             "ENGINE": "django.db.backends.postgresql",
             "NAME": "BienesRaices",
-            "USER": "admin",
-            "PASSWORD": "123qwe@@",
+            "USER": env("USER"),
+            "PASSWORD": env("PASSWORD"),
             "HOST": "db",  # from my docker-compose.yml
             "PORT": "5432",
         }
@@ -149,10 +149,10 @@ else:
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "Real-estate-project",
-#         "USER": "root",
-#         "PASSWORD": "",
-#         "HOST": "localhost",
+#         "NAME": "pypycris$default",
+#         "USER": "pypycris",
+#         "PASSWORD": "123qwe@@",
+#         "HOST": "pypycris.mysql.pythonanywhere-services.com",
 #         "PORT": "3306",
 #     }
 # }
@@ -195,15 +195,15 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = '/code/static/'
 
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"), # first 1
-# ]
-
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    os.path.join(BASE_DIR, "static"), # first 1
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
 # Default primary key field type

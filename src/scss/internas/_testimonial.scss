@@ -75,6 +75,7 @@ q {
 
         @include tablet {
             width: 60rem;
+            box-sizing: border-box;
         }
     }
 }

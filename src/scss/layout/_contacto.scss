@@ -90,8 +90,11 @@
         border-radius: 0.5rem;
     }
 
-    textarea{
-        height: 20rem;
+
+    textarea {
+        width: 100%;
+        height: 20rem;    
+        box-sizing: border-box; // extra por extensiones de chrome
     }
 
     .forma-contacto{
@@ -164,3 +167,32 @@
         height: 250px;
     }
 }
+
+// ======= clases generadas por extensiones de chrome ===== //
+
+// .textarea-container {
+//     position: relative;
+//     width: 100%;
+//     max-width: 600px;
+//     height: auto;
+// }
+
+// .textarea-container textarea {
+//     width: 100%;
+//     height: 20rem;;
+//     min-height: 100px;
+//     max-height: 300px;
+//     resize: vertical;
+//     box-sizing: border-box;
+//     overflow-y: auto;
+//     padding: 10px;
+// }
+
+// /* Ocultar los elementos añadidos por la extensión */
+// .lt-mirror {
+//     display: none !important;
+// }
+
+// .shadow-root {
+//     display: none !important;
+// }
